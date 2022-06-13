@@ -6,67 +6,119 @@ namespace SortPuzz
     {
         static void Main(string[] args)
         {
-            string eldeki = "----";
 
-            //verilerin saklandığı array
-            string[,] sortPuzz = new string[,]
+            string[,] sortPuzz;
+            int tupSayisi;
+
+            ConsoleKeyInfo keyInfo;
+
+            string islem;
+            OkuIslem:
+            Console.Write("Renkleri klavyeden giriniz veya dosyadan seçiniz : Dosya/D - Klavye/K --> D - K = ");
+            islem = Console.ReadLine();
+
+            switch (islem)
             {
-                {
-                    "kahv",
-                    "kahv",
-                    "kahv",
-                    "pemb"
-                },
-                {
-                    "sari",
-                    "yesi",
-                    "morr",
-                    "turu"
-                },
-                {
-                    "sari",
-                    "grey",
-                    "morr",
-                    "yesi"
-                },
-                {
-                    "grey",
-                    "grey",
-                    "pemb",
-                    "pemb"
-                },
-                {
-                    "sari",
-                    "pemb",
-                    "turu",
-                    "yesi"
-                },
-                {
-                    "sari",
-                    "grey",
-                    "morr",
-                    "kahv"
-                },
-                {
-                    "turu",
-                    "yesi",
-                    "turu",
-                    "morr"
-                },
-                {
-                    "----",
-                    "----",
-                    "----",
-                    "----"
-                },
-                {
-                    "----",
-                    "----",
-                    "----",
-                    "----"
-                },
+                case "K":
+                    {
+                        Console.WriteLine("Tüp sayısı gir :");
+                        
+                        tupSayisi = int.Parse(Console.ReadLine());
+                        sortPuzz = new string[tupSayisi,5];
 
-            };
+                        for (int i = 0; i < tupSayisi; i++)
+                        {
+                            Console.WriteLine("{0}. tüpteki renkler ", i + 1);
+                            int k = 0;
+
+                            for (int j = 0; j < 4; j++)
+                            {
+                                Console.Write("{0}. tüpteki {1}. rengini gir : ", i + 1, k + 1);
+                                sortPuzz[i, j] = Console.ReadLine();
+                                k = k + 1;
+                            }
+                        }
+
+                    break;
+                    }
+                  
+                  
+                case "D":
+                    {
+                        //verilerin saklandığı array
+                        sortPuzz = new string[,]
+                        {
+                            {
+                                "kahv",
+                                "kahv",
+                                "kahv",
+                                "pemb"
+                            },
+                            {
+                                "sari",
+                                "yesi",
+                                "morr",
+                                "turu"
+                            },
+                            {
+                                "sari",
+                                "grey",
+                                "morr",
+                                "yesi"
+                            },
+                            {
+                                "grey",
+                                "grey",
+                                "pemb",
+                                "pemb"
+                            },
+                            {
+                                "sari",
+                                "pemb",
+                                "turu",
+                                "yesi"
+                            },
+                            {
+                                "sari",
+                                "grey",
+                                "morr",
+                                "kahv"
+                            },
+                            {
+                                "turu",
+                                "yesi",
+                                "turu",
+                                "morr"
+                            },
+                            {
+                                "----",
+                                "----",
+                                "----",
+                                "----"
+                            },
+                            {
+                                "----",
+                                "----",
+                                "----",
+                                "----"
+                            },
+
+                        };
+
+                        break;
+
+                    }
+
+                default:
+                    {
+                        Console.WriteLine("Yanlış tuşlama yaptınız. Yeniden Deneyin.");
+                        goto OkuIslem;
+                        break;
+                    }
+            }
+
+
+            string eldeki = "----";
 
 
             //tüp sayısı
@@ -312,6 +364,13 @@ namespace SortPuzz
                 bitisKontrol();
             }
             goto basa;
+
+
+
+
+            Console.ReadKey();
+
+            
         }
     }
 }
