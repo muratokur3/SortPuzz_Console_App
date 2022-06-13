@@ -22,14 +22,14 @@ namespace SortPuzz
 
             if (islem == "K")
             {
-                Console.WriteLine("Tüp sayısı gir :");
+                Console.WriteLine("Tüp sayısı gir :");//Tüp sayısı belirleme
 
                 tupSayisi = int.Parse(Console.ReadLine());
                 sortPuzz = new string[tupSayisi, 5];
 
                 for (int i = 0; i < tupSayisi; i++)
                 {
-                    Console.WriteLine("{0}. tüpteki renkler ", i + 1);
+                    Console.WriteLine("{0}. tüpteki renkler ", i + 1);//Renkleri klavyeden girme işlemi
                     int k = 0;
 
                     for (int j = 0; j < 4; j++)
@@ -42,7 +42,7 @@ namespace SortPuzz
             }
             else if(islem=="D") 
             {
-                String textFile = File.ReadAllText( @"D:/Arcelik/C#/SortPuzz/renkKlasor/tubelist1.txt" );
+                String textFile = File.ReadAllText( @"D:/Arcelik/C#/SortPuzz/renkKlasor/tubelist1.txt" );//Dosyadan renkleri çekme
                 sortPuzz = new string[7,5];
                 int i = 0, j = 0;
 
