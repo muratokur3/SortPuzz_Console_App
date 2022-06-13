@@ -1,9 +1,11 @@
 ﻿using System;
+using System.IO;
 
 namespace SortPuzz
 {
     class Program
     {
+
         static void Main(string[] args)
         {
 
@@ -17,105 +19,51 @@ namespace SortPuzz
             Console.Write("Renkleri klavyeden giriniz veya dosyadan seçiniz : Dosya/D - Klavye/K --> D - K = ");
             islem = Console.ReadLine();
 
-            switch (islem)
+
+            if (islem == "K")
             {
-                case "K":
+                Console.WriteLine("Tüp sayısı gir :");
+
+                tupSayisi = int.Parse(Console.ReadLine());
+                sortPuzz = new string[tupSayisi, 5];
+
+                for (int i = 0; i < tupSayisi; i++)
+                {
+                    Console.WriteLine("{0}. tüpteki renkler ", i + 1);
+                    int k = 0;
+
+                    for (int j = 0; j < 4; j++)
                     {
-                        Console.WriteLine("Tüp sayısı gir :");
-                        
-                        tupSayisi = int.Parse(Console.ReadLine());
-                        sortPuzz = new string[tupSayisi,5];
-
-                        for (int i = 0; i < tupSayisi; i++)
-                        {
-                            Console.WriteLine("{0}. tüpteki renkler ", i + 1);
-                            int k = 0;
-
-                            for (int j = 0; j < 4; j++)
-                            {
-                                Console.Write("{0}. tüpteki {1}. rengini gir : ", i + 1, k + 1);
-                                sortPuzz[i, j] = Console.ReadLine();
-                                k = k + 1;
-                            }
-                        }
-
-                    break;
+                        Console.Write("{0}. tüpteki {1}. rengini gir : ", i + 1, k + 1);
+                        sortPuzz[i, j] = Console.ReadLine();
+                        k = k + 1;
                     }
-                  
-                  
-                case "D":
-                    {
-                        //verilerin saklandığı array
-                        sortPuzz = new string[,]
-                        {
-                            {
-                                "kahv",
-                                "kahv",
-                                "kahv",
-                                "pemb"
-                            },
-                            {
-                                "sari",
-                                "yesi",
-                                "morr",
-                                "turu"
-                            },
-                            {
-                                "sari",
-                                "grey",
-                                "morr",
-                                "yesi"
-                            },
-                            {
-                                "grey",
-                                "grey",
-                                "pemb",
-                                "pemb"
-                            },
-                            {
-                                "sari",
-                                "pemb",
-                                "turu",
-                                "yesi"
-                            },
-                            {
-                                "sari",
-                                "grey",
-                                "morr",
-                                "kahv"
-                            },
-                            {
-                                "turu",
-                                "yesi",
-                                "turu",
-                                "morr"
-                            },
-                            {
-                                "----",
-                                "----",
-                                "----",
-                                "----"
-                            },
-                            {
-                                "----",
-                                "----",
-                                "----",
-                                "----"
-                            },
-
-                        };
-
-                        break;
-
-                    }
-
-                default:
-                    {
-                        Console.WriteLine("Yanlış tuşlama yaptınız. Yeniden Deneyin.");
-                        goto OkuIslem;
-                        break;
-                    }
+                }
             }
+            else if(islem=="D") 
+            {
+                String textFile = File.ReadAllText( @"D:/Arcelik/C#/SortPuzz/renkKlasor/tubelist1.txt" );
+                sortPuzz = new string[7, 5];
+                int i = 0, j = 0;
+
+                foreach (var row in textFile.Split('\n'))
+                {
+                    j = 0;
+                    foreach (var col in row.Trim().Split(' '))
+                    {
+                        sortPuzz[i, j] = Convert.ToString(col.Trim());
+                        j++;
+                    }
+                    i++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Yanlış tuşlama yaptınız. Yeniden Deneyin.");
+                goto OkuIslem;
+            }
+            
+           
 
 
             string eldeki = "----";
