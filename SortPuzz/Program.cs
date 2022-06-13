@@ -53,7 +53,6 @@ namespace SortPuzz
                     "turu",
                     "morr"
                 },
-                /*deneme*/  xvzvx
                 {
                     "----",
                     "----",
