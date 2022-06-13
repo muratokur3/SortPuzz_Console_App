@@ -43,7 +43,7 @@ namespace SortPuzz
             else if(islem=="D") 
             {
                 String textFile = File.ReadAllText( @"D:/Arcelik/C#/SortPuzz/renkKlasor/tubelist1.txt" );
-                sortPuzz = new string[7, 5];
+                sortPuzz = new string[7,5];
                 int i = 0, j = 0;
 
                 foreach (var row in textFile.Split('\n'))
@@ -62,12 +62,8 @@ namespace SortPuzz
                 Console.WriteLine("Yanlış tuşlama yaptınız. Yeniden Deneyin.");
                 goto OkuIslem;
             }
-            
-           
-
-
+   
             string eldeki = "----";
-
 
             //tüp sayısı
             int tupsayisi = sortPuzz.GetLength(0) - 1;
