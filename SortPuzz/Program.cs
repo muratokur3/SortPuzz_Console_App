@@ -12,7 +12,7 @@ namespace SortPuzz
             string[,] sortPuzz;
             int tupSayisi;
 
-            ConsoleKeyInfo keyInfo;
+           
 
             string islem;
         OkuIslem:
