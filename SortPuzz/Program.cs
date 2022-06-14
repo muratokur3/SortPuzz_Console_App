@@ -25,37 +25,51 @@ namespace SortPuzz
                 Console.WriteLine("Tüp sayısı gir :");//Tüp sayısı belirleme
 
                 tupSayisi = int.Parse(Console.ReadLine());
-                sortPuzz = new string[tupSayisi, 5];
+                sortPuzz = new string[tupSayisi, 4];
 
                 for (int i = 0; i < tupSayisi; i++)
                 {
                     Console.WriteLine("{0}. tüpteki renkler ", i + 1);//Renkleri klavyeden girme işlemi
                     int k = 0;
 
-                    for (int j = 0; j < 4; j++)
+                    for (int j = 0; j <= 4; j++)
                     {
                         Console.Write("{0}. tüpteki {1}. rengini gir : ", i + 1, k + 1);
                         sortPuzz[i, j] = Console.ReadLine();
-                        k = k + 1;
+                        k++;
                     }
                 }
             }
             else if(islem=="D") 
             {
-                String textFile = File.ReadAllText( @"D:/Arcelik/C#/SortPuzz/renkKlasor/tubelist1.txt" );//Dosyadan renkleri çekme
-                sortPuzz = new string[7,5];
-                int i = 0, j = 0;
+                String textFile = File.ReadAllText( @"D:/Arcelik/C#/SortPuzz/renkKlasor/tubelist5.txt" );//Dosyadan renkleri çekme
+
+                //Dosyadaki tüp sayısını bulma
+                int tupSayisiDosya = 0; 
 
                 foreach (var row in textFile.Split('\n'))
                 {
+                    tupSayisiDosya++;
+                }
+
+                sortPuzz = new string[tupSayisiDosya, 4];
+                Console.WriteLine("Dosyadaki Tüp Sayisi : " + tupSayisiDosya);
+                
+                int i = 0, j = 0;
+                //Dosyadan renkleri getirme ve sortPuzz çok boyutlu diziye kaydetme
+                foreach (var row in textFile.Split('\n'))
+                {
+                    
                     j = 0;
                     foreach (var col in row.Trim().Split(' '))
                     {
+                        
                         sortPuzz[i, j] = Convert.ToString(col.Trim());
                         j++;
                     }
                     i++;
                 }
+                
             }
             else
             {
