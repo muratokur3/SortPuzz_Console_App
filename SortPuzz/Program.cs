@@ -40,7 +40,7 @@ namespace SortPuzz
             }
             else if (islem == "D")
             {
-                String textFile = File.ReadAllText(@"D:/Arcelik/C#/SortPuzz/renkKlasor/tubelist8.txt");//Dosyadan renkleri çekme
+                String textFile = File.ReadAllText(@"D:/Arcelik/C#/SortPuzz/renkKlasor/tubelist15.txt");//Dosyadan renkleri çekme
 
                 //Dosyadaki tüp sayısını bulma
                 int tupSayisiDosya = 0;
@@ -77,7 +77,7 @@ namespace SortPuzz
 
 
 
-            string eldeki = "----";
+            string eldeki = "_";
 
             //tüp sayısı
             int tupsayisi = sortPuzz.GetLength(0) - 1;
@@ -107,7 +107,15 @@ namespace SortPuzz
                 {
                     for (int i = 0; i <= tupsayisi; i++)
                     {
-                        Console.Write(sortPuzz[i, j] + " ");
+                        if(sortPuzz[i, j] == "_")
+                        {
+                            Console.Write(sortPuzz[i, j] + "  ");
+                        }
+                        else
+                        {
+                            Console.Write(sortPuzz[i, j] + " ");
+                        }
+                        
 
                     }
                     Console.WriteLine();
@@ -126,7 +134,15 @@ namespace SortPuzz
                 {
                     for (int j = 0; j <= 3; j++)
                     {
-                        sonDurumString[sonDurumStringSayisi - 1, i] = sonDurumString[sonDurumStringSayisi - 1, i] + sortPuzz[i, j].Substring(0, 2);
+                        if(sortPuzz[i, j].Substring(0, 1) == "_")
+                        {
+                            sonDurumString[sonDurumStringSayisi - 1, i] = sonDurumString[sonDurumStringSayisi - 1, i] + "_";
+                        }
+                        else
+                        {
+                            sonDurumString[sonDurumStringSayisi - 1, i] = sonDurumString[sonDurumStringSayisi - 1, i] + sortPuzz[i, j].Substring(0, 2);
+                        }
+                        
                     }
                 }
                 sonDurumStringSayisi++;
@@ -174,7 +190,7 @@ namespace SortPuzz
             bool eldekiUygun = false;
             void eldekiKontrol(int i, int j)
             {
-                if (j == 3 && sortPuzz[i, j] != "----" || (j < 3 && sortPuzz[i, j] != "----" && sortPuzz[i, j + 1] == "----"))
+                if (j == 3 && sortPuzz[i, j] != "_" || (j < 3 && sortPuzz[i, j] != "_" && sortPuzz[i, j + 1] == "_"))
                 {
                     eldekiUygun = true;
                 }
@@ -188,10 +204,10 @@ namespace SortPuzz
             bool tupUygun = false;
             void tupKontrol(int i, int j, int k, int l)
             {
-                if ((sortPuzz[k, l] == "----" && i != k && eldeki != "----")//baktığın yer boş değil VE aynı konum değil VE eldeki değişkeni boş değil ise VE
+                if ((sortPuzz[k, l] == "_" && i != k && eldeki != "_")//baktığın yer boş değil VE aynı konum değil VE eldeki değişkeni boş değil ise VE
                 &&
                 (
-                (l == 0 && sortPuzz[k, 1] == "----" && sortPuzz[k, 2] == "----" && sortPuzz[k, 3] == "----") //baktığın tupun en altındayken VE tüpün tümü boş ise
+                (l == 0 && sortPuzz[k, 1] == "_" && sortPuzz[k, 2] == "_" && sortPuzz[k, 3] == "_") //baktığın tupun en altındayken VE tüpün tümü boş ise
                 ||
                 (l != 0 && sortPuzz[k, l - 1] == eldeki)//tüpün en altında değilken VE baktığın yerin bir altı eldeki ile aynı ise
                 )
@@ -231,13 +247,13 @@ namespace SortPuzz
             //tüp sayısının iki eksiği kadar aynı renkte tüp olunca oyunu bitir
             void bitisKontrol(int hareketSayisi)
             {
-                string kntrl = "----";
+                string kntrl = "_";
                 int doluSayac = 0;
                 for (int x = 0; x <= tupsayisi; x++)
                 {
                     kntrl = sortPuzz[x, 3];
 
-                    if (sortPuzz[x, 0] == kntrl && sortPuzz[x, 1] == kntrl && sortPuzz[x, 2] == kntrl && sortPuzz[x, 3] == kntrl && kntrl != "----")
+                    if (sortPuzz[x, 0] == kntrl && sortPuzz[x, 1] == kntrl && sortPuzz[x, 2] == kntrl && sortPuzz[x, 3] == kntrl && kntrl != "_")
                     {
                         doluSayac++;
                     }
@@ -274,24 +290,24 @@ namespace SortPuzz
                     sortPuzz[k, l] = eldeki;
                     sortPuzz[k, l + 1] = eldeki;
                     sortPuzz[k, l + 2] = eldeki;
-                    eldeki = "----";
-                    sortPuzz[i, j] = "----";
-                    sortPuzz[i, j - 1] = "----";
-                    sortPuzz[i, j - 2] = "----";
+                    eldeki = "_";
+                    sortPuzz[i, j] = "_";
+                    sortPuzz[i, j - 1] = "_";
+                    sortPuzz[i, j - 2] = "_";
                 }
                 else if (l < 3 && j > 0 && sortPuzz[i, j - 1] == eldeki)//2li taşı
                 {
                     sortPuzz[k, l] = eldeki;
                     sortPuzz[k, l + 1] = eldeki;
-                    eldeki = "----";
-                    sortPuzz[i, j] = "----";
-                    sortPuzz[i, j - 1] = "----";
+                    eldeki = "_";
+                    sortPuzz[i, j] = "_";
+                    sortPuzz[i, j - 1] = "_";
                 }
                 else//teki taşı
                 {
                     sortPuzz[k, l] = eldeki;
-                    eldeki = "----";
-                    sortPuzz[i, j] = "----";
+                    eldeki = "_";
+                    sortPuzz[i, j] = "_";
                 }
                 cikmazSayaci = 0;
                 //cikti();

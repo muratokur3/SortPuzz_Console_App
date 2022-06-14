@@ -4,5 +4,5 @@ kv mv mv ys
 tr kv mv pb
 pb tr sr pb
 tr ys pb sr
--- -- -- --
--- -- -- --
+_ _ _ _
+_ _ _ _
