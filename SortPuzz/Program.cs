@@ -10,9 +10,7 @@ namespace SortPuzz
         {
 
             string[,] sortPuzz;
-            int tupSayisi;
-
-           
+            
 
             string islem;
         OkuIslem:
@@ -24,10 +22,10 @@ namespace SortPuzz
             {
                 Console.WriteLine("Tüp sayısı gir :");//Tüp sayısı belirleme
 
-                tupSayisi = int.Parse(Console.ReadLine());
-                sortPuzz = new string[tupSayisi, 4];
+                int tupSayisiKlavye = int.Parse(Console.ReadLine());
+                sortPuzz = new string[tupSayisiKlavye, 4];
 
-                for (int i = 0; i < tupSayisi; i++)
+                for (int i = 0; i < tupSayisiKlavye; i++)
                 {
                     Console.WriteLine("{0}. tüpteki renkler ", i + 1);//Renkleri klavyeden girme işlemi
                     int k = 0;
@@ -59,11 +57,9 @@ namespace SortPuzz
                 //Dosyadan renkleri getirme ve sortPuzz çok boyutlu diziye kaydetme
                 foreach (var row in textFile.Split('\n'))
                 {
-
                     j = 0;
                     foreach (var col in row.Trim().Split(' '))
                     {
-
                         sortPuzz[i, j] = Convert.ToString(col.Trim());
                         j++;
                     }
@@ -76,7 +72,11 @@ namespace SortPuzz
                 Console.WriteLine("Yanlış tuşlama yaptınız. Yeniden Deneyin.");
                 goto OkuIslem;
             }
-            Console.Clear();
+            Console.Clear();//Console temizleme
+
+
+
+
             string eldeki = "----";
 
             //tüp sayısı
@@ -148,7 +148,6 @@ namespace SortPuzz
                                 if (sayac <= 8 && sonDurumString[adim, j].Substring(sayac, 2) == sortPuzz[i, s].Substring(0, 2))
                                 {
                                     sonDurumHareketListesi[j, k] = sortPuzz[i, s];
-
                                 }
                             }
                         }
@@ -168,7 +167,6 @@ namespace SortPuzz
 
                 //cikti();
                 Console.ReadLine();
-
 
             }
 
@@ -257,19 +255,14 @@ namespace SortPuzz
                         else
                         {
                             Environment.Exit(0);
-                        }
-                        
-                    }
-                   
-                  
-                    
+                        }                        
+                    }                
                 }
             }
 
             //dökme işlemi gerçekleşir
             void tupDok(int i, int j, int k, int l)
             {
-  
                 hareketSayisi++;
 
                 adimListesi[adimSayisi] = (i + 1) + " to " + (k + 1);//atılan adımların listesini tutar
@@ -370,12 +363,7 @@ namespace SortPuzz
             }
             goto basa;
 
-
-
-
-            Console.ReadKey();
-
-            
+            Console.ReadKey();   
         }
     }
 }
