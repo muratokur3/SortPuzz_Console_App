@@ -15,7 +15,7 @@ namespace SortPuzz
             ConsoleKeyInfo keyInfo;
 
             string islem;
-            OkuIslem:
+        OkuIslem:
             Console.Write("Renkleri klavyeden giriniz veya dosyadan seçiniz : Dosya/D - Klavye/K --> D - K = ");
             islem = Console.ReadLine();
 
@@ -32,7 +32,7 @@ namespace SortPuzz
                     Console.WriteLine("{0}. tüpteki renkler ", i + 1);//Renkleri klavyeden girme işlemi
                     int k = 0;
 
-                    for (int j = 0; j <= 4; j++)
+                    for (int j = 0; j < 4; j++)
                     {
                         Console.Write("{0}. tüpteki {1}. rengini gir : ", i + 1, k + 1);
                         sortPuzz[i, j] = Console.ReadLine();
@@ -40,12 +40,12 @@ namespace SortPuzz
                     }
                 }
             }
-            else if(islem=="D") 
+            else if (islem == "D")
             {
-                String textFile = File.ReadAllText( @"D:/Arcelik/C#/SortPuzz/renkKlasor/tubelist5.txt" );//Dosyadan renkleri çekme
+                String textFile = File.ReadAllText(@"D:/Arcelik/C#/SortPuzz/renkKlasor/tubelist5.txt");//Dosyadan renkleri çekme
 
                 //Dosyadaki tüp sayısını bulma
-                int tupSayisiDosya = 0; 
+                int tupSayisiDosya = 0;
 
                 foreach (var row in textFile.Split('\n'))
                 {
@@ -54,29 +54,29 @@ namespace SortPuzz
 
                 sortPuzz = new string[tupSayisiDosya, 4];
                 Console.WriteLine("Dosyadaki Tüp Sayisi : " + tupSayisiDosya);
-                
+
                 int i = 0, j = 0;
                 //Dosyadan renkleri getirme ve sortPuzz çok boyutlu diziye kaydetme
                 foreach (var row in textFile.Split('\n'))
                 {
-                    
+
                     j = 0;
                     foreach (var col in row.Trim().Split(' '))
                     {
-                        
+
                         sortPuzz[i, j] = Convert.ToString(col.Trim());
                         j++;
                     }
                     i++;
                 }
-                
+
             }
             else
             {
                 Console.WriteLine("Yanlış tuşlama yaptınız. Yeniden Deneyin.");
                 goto OkuIslem;
             }
-   
+            Console.Clear();
             string eldeki = "----";
 
             //tüp sayısı
@@ -84,10 +84,13 @@ namespace SortPuzz
             int cikmazSayaci = 0;
             int geriAdimSayaci = 1;
 
-            int hareketSayisi = 0;
+            int hareketSayisi = 1;
 
             //adımların listessini saklayan array
             int adimSayisi = 0;
+
+            string[] hareketDetay = new string[100];
+            
             string[] adimListesi = new string[100];
 
             //gelinen son durumdaki hareketlerin listesini string olarak ilk 2 harfini saklayan array
@@ -110,8 +113,10 @@ namespace SortPuzz
                     Console.WriteLine();
                 }
                 //sondurum();
-                Console.ReadLine();
+                Console.WriteLine("");
+
             }
+            Console.WriteLine("");
             cikti();
 
             // son durum hareket listesindeki renklerin ilk iki karakterini string tipinde saklıyoruz
@@ -226,15 +231,15 @@ namespace SortPuzz
             }
 
             //tüp sayısının iki eksiği kadar aynı renkte tüp olunca oyunu bitir
-            void bitisKontrol()
+            void bitisKontrol(int hareketSayisi)
             {
                 string kntrl = "----";
                 int doluSayac = 0;
-                for (int i = 0; i <= tupsayisi; i++)
+                for (int x = 0; x <= tupsayisi; x++)
                 {
-                    kntrl = sortPuzz[i, 3];
+                    kntrl = sortPuzz[x, 3];
 
-                    if (sortPuzz[i, 0] == kntrl && sortPuzz[i, 1] == kntrl && sortPuzz[i, 2] == kntrl && sortPuzz[i, 3] == kntrl && kntrl != "----")
+                    if (sortPuzz[x, 0] == kntrl && sortPuzz[x, 1] == kntrl && sortPuzz[x, 2] == kntrl && sortPuzz[x, 3] == kntrl && kntrl != "----")
                     {
                         doluSayac++;
                     }
@@ -242,20 +247,33 @@ namespace SortPuzz
 
                 if (doluSayac == tupsayisi - 1)
                 {
-                    //Console.WriteLine("başardık");
-                    Environment.Exit(0);
+                    for(int y = 1; y <= hareketSayisi; y++)
+                    {
+                        if (hareketDetay[y] != null)
+                        {
+                            Console.WriteLine(hareketDetay[y].ToString());
+                        }
+                        else
+                        {
+                            Environment.Exit(0);
+                        }
+                        
+                    }
+                   
+                  
+                    
                 }
             }
 
             //dökme işlemi gerçekleşir
             void tupDok(int i, int j, int k, int l)
             {
+  
                 hareketSayisi++;
-                Console.WriteLine(hareketSayisi+". hareket "+(i + 1) + ". tüpten -> " + (k + 1) + ". nolu tüpe dök");//ekrana atılması gereken adımları yazar
 
                 adimListesi[adimSayisi] = (i + 1) + " to " + (k + 1);//atılan adımların listesini tutar
                 adimSayisi++;
-                Console.WriteLine();
+                
 
                 if (l < 2 && j > 1 && sortPuzz[i, j - 1] == eldeki && sortPuzz[i, j - 2] == eldeki)//3lü taşı
                 {
@@ -303,9 +321,29 @@ namespace SortPuzz
                                 tupKontrol(i, j, k, l);
                                 if (tupUygun == true && tupDolu == false)
                                 {
+                                    //birim sıvı sayısı bulma
+                                    int birimSiviSayisi = 0;
+                                    if (l < 2 && j > 1 && sortPuzz[i, j - 1] == eldeki && sortPuzz[i, j - 2] == eldeki)//3lü taşı
+                                    {
+                                        birimSiviSayisi = birimSiviSayisi + 3;
+                                    }
+                                    else if (l < 3 && j > 0 && sortPuzz[i, j - 1] == eldeki)//2li taşı
+                                    {
+                                        birimSiviSayisi = birimSiviSayisi + 2;
+                                    }
+                                    else
+                                    {
+                                        birimSiviSayisi++;
+                                    }
+                                    //***********************
 
+                                    Console.WriteLine((i + 1) + "->" + (k + 1) + " " + eldeki + " TOPLAM " + birimSiviSayisi + " adet");
+                                    Console.WriteLine("Hareket sayısı :" + hareketSayisi);
+                                    hareketDetay[hareketSayisi]= hareketSayisi + ". hareket " + (i + 1) + ". tüpten -> " + (k + 1) + ". nolu tüpe "+eldeki+" renginden "+birimSiviSayisi+" birim sıvı.";//ekrana atılması gereken adımları yazar
                                     tupDok(i, j, k, l);
                                     sondurum();
+                                    cikti();
+                                    bitisKontrol(hareketSayisi);
                                     cikmazSayaci = 0;
                                 }
                                 else
@@ -324,7 +362,7 @@ namespace SortPuzz
                         }
                     }
                 }
-                bitisKontrol();
+                
             }
             goto basa;
 
