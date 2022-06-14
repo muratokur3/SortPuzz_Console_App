@@ -251,6 +251,7 @@ namespace SortPuzz
                     {
                         if (hareketDetay[y] != null)
                         {
+                            //Console en son detay gösterme
                             Console.WriteLine(hareketDetay[y].ToString());
                         }
                         else
@@ -339,7 +340,10 @@ namespace SortPuzz
 
                                     Console.WriteLine((i + 1) + "->" + (k + 1) + " " + eldeki + " TOPLAM " + birimSiviSayisi + " adet");
                                     Console.WriteLine("Hareket sayısı :" + hareketSayisi);
+
+                                    //Hareket detayı en son kısımda göstermek için hareketDetay dizisine detay verilerini ekleme. 
                                     hareketDetay[hareketSayisi]= hareketSayisi + ". hareket " + (i + 1) + ". tüpten -> " + (k + 1) + ". nolu tüpe "+eldeki+" renginden "+birimSiviSayisi+" birim sıvı.";//ekrana atılması gereken adımları yazar
+                                    
                                     tupDok(i, j, k, l);
                                     sondurum();
                                     cikti();
