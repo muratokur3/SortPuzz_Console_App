@@ -83,6 +83,9 @@ namespace SortPuzz
             int tupsayisi = sortPuzz.GetLength(0) - 1;
             int cikmazSayaci = 0;
             int geriAdimSayaci = 1;
+
+            int hareketSayisi = 0;
+
             //adımların listessini saklayan array
             int adimSayisi = 0;
             string[] adimListesi = new string[100];
@@ -158,7 +161,7 @@ namespace SortPuzz
                     Console.WriteLine();
                 }
 
-                cikti();
+                //cikti();
                 Console.ReadLine();
 
 
@@ -239,7 +242,7 @@ namespace SortPuzz
 
                 if (doluSayac == tupsayisi - 1)
                 {
-                    Console.WriteLine("başardık");
+                    //Console.WriteLine("başardık");
                     Environment.Exit(0);
                 }
             }
@@ -247,7 +250,8 @@ namespace SortPuzz
             //dökme işlemi gerçekleşir
             void tupDok(int i, int j, int k, int l)
             {
-                Console.WriteLine((i + 1) + " to " + (k + 1));//ekrana atılması gereken adımları yazar
+                hareketSayisi++;
+                Console.WriteLine(hareketSayisi+". hareket "+(i + 1) + ". tüpten -> " + (k + 1) + ". nolu tüpe dök");//ekrana atılması gereken adımları yazar
 
                 adimListesi[adimSayisi] = (i + 1) + " to " + (k + 1);//atılan adımların listesini tutar
                 adimSayisi++;
@@ -278,7 +282,7 @@ namespace SortPuzz
                     sortPuzz[i, j] = "----";
                 }
                 cikmazSayaci = 0;
-                cikti();
+                //cikti();
             }
 
 
@@ -299,6 +303,7 @@ namespace SortPuzz
                                 tupKontrol(i, j, k, l);
                                 if (tupUygun == true && tupDolu == false)
                                 {
+
                                     tupDok(i, j, k, l);
                                     sondurum();
                                     cikmazSayaci = 0;
