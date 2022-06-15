@@ -40,7 +40,7 @@ namespace SortPuzz
             }
             else if (islem == "D")
             {
-                String textFile = File.ReadAllText(@"D:/Arcelik/C#/SortPuzz/renkKlasor/tubelist15.txt");//Dosyadan renkleri çekme
+                String textFile = File.ReadAllText(@"D:/Arcelik/C#/SortPuzz/renkKlasor/tubelist18.txt");//Dosyadan renkleri çekme
 
                 //Dosyadaki tüp sayısını bulma
                 int tupSayisiDosya = 0;
