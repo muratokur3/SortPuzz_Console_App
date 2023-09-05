@@ -1,0 +1,7 @@
+mv sr sr pb
+mv mr mr tr
+pb mv tr tr
+mr pb pb sr
+sr tr mr mv
+_ _ _ _
+_ _ _ _

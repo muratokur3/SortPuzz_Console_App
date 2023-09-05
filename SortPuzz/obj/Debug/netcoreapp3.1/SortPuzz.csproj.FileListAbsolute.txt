@@ -1,0 +1,13 @@
+/Users/muratokur/Documents/GitHub/c#/SortPuzz-master/SortPuzz/bin/Debug/netcoreapp3.1/SortPuzz.deps.json
+/Users/muratokur/Documents/GitHub/c#/SortPuzz-master/SortPuzz/bin/Debug/netcoreapp3.1/SortPuzz.runtimeconfig.json
+/Users/muratokur/Documents/GitHub/c#/SortPuzz-master/SortPuzz/bin/Debug/netcoreapp3.1/SortPuzz.runtimeconfig.dev.json
+/Users/muratokur/Documents/GitHub/c#/SortPuzz-master/SortPuzz/bin/Debug/netcoreapp3.1/SortPuzz.dll
+/Users/muratokur/Documents/GitHub/c#/SortPuzz-master/SortPuzz/bin/Debug/netcoreapp3.1/SortPuzz.pdb
+/Users/muratokur/Documents/GitHub/c#/SortPuzz-master/SortPuzz/obj/Debug/netcoreapp3.1/SortPuzz.csproj.AssemblyReference.cache
+/Users/muratokur/Documents/GitHub/c#/SortPuzz-master/SortPuzz/obj/Debug/netcoreapp3.1/SortPuzz.GeneratedMSBuildEditorConfig.editorconfig
+/Users/muratokur/Documents/GitHub/c#/SortPuzz-master/SortPuzz/obj/Debug/netcoreapp3.1/SortPuzz.AssemblyInfoInputs.cache
+/Users/muratokur/Documents/GitHub/c#/SortPuzz-master/SortPuzz/obj/Debug/netcoreapp3.1/SortPuzz.AssemblyInfo.cs
+/Users/muratokur/Documents/GitHub/c#/SortPuzz-master/SortPuzz/obj/Debug/netcoreapp3.1/SortPuzz.csproj.CoreCompileInputs.cache
+/Users/muratokur/Documents/GitHub/c#/SortPuzz-master/SortPuzz/obj/Debug/netcoreapp3.1/SortPuzz.dll
+/Users/muratokur/Documents/GitHub/c#/SortPuzz-master/SortPuzz/obj/Debug/netcoreapp3.1/SortPuzz.pdb
+/Users/muratokur/Documents/GitHub/c#/SortPuzz-master/SortPuzz/obj/Debug/netcoreapp3.1/SortPuzz.genruntimeconfig.cache
