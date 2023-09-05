@@ -1,5 +1,0 @@
-ys tr mv mv
-tr mv tr tr
-mv ys ys ys
-_ _ _ _
-_ _ _ _
